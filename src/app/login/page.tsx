@@ -140,7 +140,7 @@ function LoginForm() {
             </p>
             <Link
               href="/forgot-password"
-              className="inline-block bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium"
+              className="inline-block bg-theater-600 text-white px-4 py-2 rounded-lg hover:bg-theater-700 transition-colors font-medium"
             >
               הגדר סיסמה עכשיו
             </Link>
