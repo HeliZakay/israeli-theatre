@@ -88,10 +88,10 @@ const authOptions: NextAuthOptions = {
         try {
           const client = await clientPromise;
           const db = client.db();
-          const userExists = await db.collection("users").findOne({ 
-            email: session.user.email 
+          const userExists = await db.collection("users").findOne({
+            email: session.user.email,
           });
-          
+
           // If user was deleted from database, remove user info from session
           if (!userExists) {
             return { expires: session.expires }; // Return empty session

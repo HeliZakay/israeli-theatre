@@ -50,6 +50,9 @@ export default async function HomePage() {
       .limit(5)
       .toArray();
 
+    console.log("Found reviews in database:", rawReviews.length);
+    console.log("Reviews data:", rawReviews);
+
     reviews = rawReviews.map((r) => ({
       _id: r._id?.toString(),
       showId: r.showId.toString(),
@@ -64,6 +67,10 @@ export default async function HomePage() {
     }));
   } catch (error) {
     console.error("Database connection failed:", error);
+    if (error instanceof Error) {
+      console.error("Error details:", error.message);
+      console.error("Stack trace:", error.stack);
+    }
     // Fallback to mock data if database fails
     shows = [
       {
