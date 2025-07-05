@@ -19,10 +19,8 @@ export default async function HomePage() {
     showPosterUrl?: string | null;
   }[] = [];
   try {
-    console.log("[HomePage] Attempting to connect to database...");
     // Fetch shows from database
     const rawShows = await (await showsCollection()).find().toArray();
-    console.log("[HomePage] Successfully fetched shows:", rawShows.length);
 
     shows = rawShows.map((s) => ({
       id: s._id!.toString(),
@@ -46,13 +44,11 @@ export default async function HomePage() {
     );
 
     // Fetch latest 5 reviews
-    console.log("[HomePage] Attempting to fetch reviews...");
     const rawReviews = await (await reviewsCollection())
       .find()
       .sort({ createdAt: -1 })
       .limit(5)
       .toArray();
-    console.log("[HomePage] Successfully fetched reviews:", rawReviews.length);
 
     reviews = rawReviews.map((r) => ({
       _id: r._id?.toString(),
@@ -67,8 +63,7 @@ export default async function HomePage() {
       showPosterUrl: showPosterMap[r.showId.toString()] ?? null,
     }));
   } catch (error) {
-    console.error("[HomePage] Database connection failed:", error);
-    console.log("[HomePage] Falling back to mock data");
+    console.error("Database connection failed:", error);
     // Fallback to mock data if database fails
     shows = [
       {
