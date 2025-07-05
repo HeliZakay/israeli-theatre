@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 50" width="170" height="50">
+  <defs>
+    <!-- Gradient for the background -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B1538;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6B1029;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Text shadow -->
+    <filter id="textShadow">
+      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+  
+  <!-- Clean background -->
+  <rect x="0" y="0" width="170" height="50" rx="8" fill="url(#bgGradient)"/>
+  
+  <!-- Curtain rod across the top -->
+  <rect x="0" y="3" width="170" height="2" fill="#8B6F3A"/>
+  
+  <!-- Left curtain panels -->
+  <g>
+    <!-- Panel 1 -->
+    <rect x="5" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
+    <rect x="6" y="5" width="6" height="40" fill="#C19B6B"/>
+    <line x1="9" y1="5" x2="9" y2="45" stroke="#B8956A" stroke-width="0.5"/>
+    
+    <!-- Panel 2 -->
+    <rect x="15" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
+    <rect x="16" y="5" width="6" height="40" fill="#C19B6B"/>
+    <line x1="19" y1="5" x2="19" y2="45" stroke="#B8956A" stroke-width="0.5"/>
+    
+    <!-- Panel 3 -->
+    <rect x="25" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
+    <rect x="26" y="5" width="6" height="40" fill="#C19B6B"/>
+    <line x1="29" y1="5" x2="29" y2="45" stroke="#B8956A" stroke-width="0.5"/>
+  </g>
+  
+  <!-- Right curtain panels -->
+  <g>
+    <!-- Panel 1 -->
+    <rect x="137" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
+    <rect x="138" y="5" width="6" height="40" fill="#C19B6B"/>
+    <line x1="141" y1="5" x2="141" y2="45" stroke="#B8956A" stroke-width="0.5"/>
+    
+    <!-- Panel 2 -->
+    <rect x="147" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
+    <rect x="148" y="5" width="6" height="40" fill="#C19B6B"/>
+    <line x1="151" y1="5" x2="151" y2="45" stroke="#B8956A" stroke-width="0.5"/>
+    
+    <!-- Panel 3 -->
+    <rect x="157" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
+    <rect x="158" y="5" width="6" height="40" fill="#C19B6B"/>
+    <line x1="161" y1="5" x2="161" y2="45" stroke="#B8956A" stroke-width="0.5"/>
+  </g>
+  
+  <!-- Center stage typography -->
+  <text x="85" y="22" font-family="serif" font-size="18" font-weight="bold" fill="#FFFFFF" filter="url(#textShadow)" text-anchor="middle">
+    תיאטרון
+  </text>
+  <text x="85" y="38" font-family="serif" font-size="14" font-weight="600" fill="#FFFFFF" opacity="0.9" filter="url(#textShadow)" text-anchor="middle">
+    בישראל
+  </text>
+  
+  <!-- Stage floor -->
+  <rect x="35" y="47" width="100" height="2" fill="#B8956A" opacity="0.7"/>
+</svg>

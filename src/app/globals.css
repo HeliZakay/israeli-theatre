@@ -3,6 +3,19 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Theater Colors - Deep, Rich, Elegant */
+  --theater-50: #fdf2f2;
+  --theater-100: #fce7e7;
+  --theater-200: #f8d7d7;
+  --theater-300: #f0b8b8;
+  --theater-400: #e89494;
+  --theater-500: #dc6b6b;
+  --theater-600: #8b1538; /* Deep wine red - main theater color */
+  --theater-700: #7a1230; /* Darker wine */
+  --theater-800: #651025; /* Rich burgundy */
+  --theater-900: #4a0c1a; /* Deep burgundy */
+  --theater-950: #2d0610; /* Darkest theater red */
 }
 
 @theme inline {
@@ -10,6 +23,19 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Theater color definitions for Tailwind */
+  --color-theater-50: var(--theater-50);
+  --color-theater-100: var(--theater-100);
+  --color-theater-200: var(--theater-200);
+  --color-theater-300: var(--theater-300);
+  --color-theater-400: var(--theater-400);
+  --color-theater-500: var(--theater-500);
+  --color-theater-600: var(--theater-600);
+  --color-theater-700: var(--theater-700);
+  --color-theater-800: var(--theater-800);
+  --color-theater-900: var(--theater-900);
+  --color-theater-950: var(--theater-950);
 }
 
 @media (prefers-color-scheme: dark) {
