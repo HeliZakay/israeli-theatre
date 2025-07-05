@@ -104,15 +104,15 @@ export default function SignupPage() {
                   </svg>
                   <span className="font-medium">האימייל כבר רשום</span>
                 </div>
-                <p className="text-sm mb-3">
-                  נראה שכבר יש לך חשבון באתר. אולי תרצה להתחבר?
+                <p className="text-sm">
+                  נראה שכבר יש לך חשבון באתר. אולי תרצה{" "}
+                  <Link
+                    href="/login"
+                    className="underline hover:text-blue-900 transition-colors"
+                  >
+                    להתחבר?
+                  </Link>
                 </p>
-                <Link
-                  href="/login"
-                  className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                >
-                  התחבר כאן
-                </Link>
               </div>
             ) : (
               <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">

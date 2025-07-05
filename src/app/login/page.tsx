@@ -106,15 +106,15 @@ function LoginForm() {
               </svg>
               <span className="font-medium">האימייל לא רשום במערכת</span>
             </div>
-            <p className="text-sm mb-3">
-              נראה שעדיין לא נרשמת לאתר. ברוכים הבאים!
+            <p className="text-sm">
+              נראה שעדיין לא נרשמת לאתר. ברוכים הבאים!{" "}
+              <Link
+                href="/signup"
+                className="underline hover:text-blue-900 transition-colors"
+              >
+                להרשמה לחץ כאן
+              </Link>
             </p>
-            <Link
-              href="/signup"
-              className="inline-block bg-theater-600 text-white px-4 py-2 rounded-lg hover:bg-theater-700 transition-colors font-medium"
-            >
-              הירשם עכשיו
-            </Link>
           </div>
         ) : isGoogleOnlyError ? (
           <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-4">
@@ -135,15 +135,15 @@ function LoginForm() {
               <span className="font-medium">חשבון Google בלבד</span>
             </div>
             <p className="text-sm mb-3">
-              חשבון זה נוצר באמצעות Google בלבד. כדי להתחבר עם סיסמה, צריך
-              להגדיר אותה תחילה.
+              חשבון זה נוצר באמצעות Google בלבד. תוכל להתחבר עם הכפתור Google
+              למטה, או{" "}
+              <Link
+                href="/forgot-password"
+                className="underline hover:text-red-900 transition-colors"
+              >
+                ליצור סיסמה חדשה לחשבון באמצעות לינק לאיפוס סיסמה
+              </Link>
             </p>
-            <Link
-              href="/forgot-password"
-              className="inline-block bg-theater-600 text-white px-4 py-2 rounded-lg hover:bg-theater-700 transition-colors font-medium"
-            >
-              הגדר סיסמה עכשיו
-            </Link>
           </div>
         ) : isPasswordError ? (
           <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-4">
