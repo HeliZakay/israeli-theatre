@@ -39,14 +39,14 @@ async function checkReviewsDetailed() {
 
     console.log("\n=== ביקורות עם כותרות הצגות ===");
     reviews.forEach((review, index) => {
-      const showTitle = showTitleMap[review.showId.toString()] || "הצגה לא ידועה";
+      const showTitle =
+        showTitleMap[review.showId.toString()] || "הצגה לא ידועה";
       console.log(`${index + 1}. ${review.userName} על "${showTitle}"`);
       console.log(`   דירוג: ${review.rating}`);
       console.log(`   תגובה: ${review.comment}`);
       console.log(`   תאריך: ${review.createdAt || "לא צוין"}`);
       console.log("   ---");
     });
-
   } catch (error) {
     console.error("שגיאה:", error);
   } finally {

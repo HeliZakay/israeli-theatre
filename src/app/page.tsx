@@ -5,7 +5,7 @@ import { showsCollection, reviewsCollection } from "@/lib/db";
 import type { ShowCardData } from "@/types/models";
 
 // Force dynamic rendering
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   let shows: ShowCardData[] = [];
@@ -21,7 +21,7 @@ export default async function HomePage() {
     showTitle?: string;
     showPosterUrl?: string | null;
   }[] = [];
-  
+
   try {
     // Fetch shows from database
     const rawShows = await (await showsCollection()).find().toArray();

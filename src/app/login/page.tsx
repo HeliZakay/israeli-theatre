@@ -166,12 +166,6 @@ function LoginForm() {
             <p className="text-sm mb-3">
               הסיסמה שהזנת אינה נכונה. אנא נסה שוב.
             </p>
-            <Link
-              href="/forgot-password"
-              className="inline-block bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium"
-            >
-              שכחת סיסמה?
-            </Link>
           </div>
         ) : (
           error && (

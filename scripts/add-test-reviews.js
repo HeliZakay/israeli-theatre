@@ -59,11 +59,12 @@ async function addTestReviews() {
 
     console.log("\n=== Latest 5 reviews ===");
     latestReviews.forEach((review, index) => {
-      console.log(`${index + 1}. ${review.userName} - Rating: ${review.rating}`);
+      console.log(
+        `${index + 1}. ${review.userName} - Rating: ${review.rating}`
+      );
       console.log(`   Comment: ${review.comment}`);
       console.log("   ---");
     });
-
   } catch (error) {
     console.error("Error:", error);
   } finally {

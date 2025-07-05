@@ -27,11 +27,13 @@ async function testHomepageQueries() {
       .sort({ createdAt: -1 })
       .limit(5)
       .toArray();
-    
+
     console.log("Reviews found:", reviews.length);
     console.log("Reviews data:");
     reviews.forEach((review, index) => {
-      console.log(`${index + 1}. ${review.userName} - Rating: ${review.rating}`);
+      console.log(
+        `${index + 1}. ${review.userName} - Rating: ${review.rating}`
+      );
       console.log(`   Show: ${review.showId}`);
       console.log(`   Created: ${review.createdAt}`);
       console.log(`   ---`);
@@ -45,13 +47,13 @@ async function testHomepageQueries() {
 
     console.log("\n=== Reviews with show titles ===");
     reviews.forEach((review, index) => {
-      const showTitle = showTitleMap[review.showId.toString()] || "Unknown show";
+      const showTitle =
+        showTitleMap[review.showId.toString()] || "Unknown show";
       console.log(`${index + 1}. ${review.userName} on "${showTitle}"`);
       console.log(`   Rating: ${review.rating}`);
       console.log(`   Comment: ${review.comment}`);
       console.log(`   ---`);
     });
-
   } catch (error) {
     console.error("Error:", error);
   } finally {
