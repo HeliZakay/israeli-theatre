@@ -59,18 +59,23 @@ export default async function HomePage() {
     console.log("Found reviews in database:", rawReviews.length);
     console.log("Reviews data:", rawReviews);
 
-    reviews = rawReviews.map((r) => ({
-      _id: r._id?.toString(),
-      showId: r.showId.toString(),
-      userName: r.userName,
-      rating: r.rating,
-      comment: r.comment,
-      createdAt: r.createdAt,
-      userId: r.userId?.toString(),
-      userEmail: r.userEmail,
-      showTitle: showTitleMap[r.showId.toString()] || "הצגה לא ידועה",
-      showPosterUrl: showPosterMap[r.showId.toString()] ?? null,
-    }));
+    reviews = rawReviews.map((r) => {
+      console.log("Processing review:", r.userName, "for show:", r.showId);
+      return {
+        _id: r._id?.toString(),
+        showId: r.showId.toString(),
+        userName: r.userName,
+        rating: r.rating,
+        comment: r.comment,
+        createdAt: r.createdAt,
+        userId: r.userId?.toString(),
+        userEmail: r.userEmail,
+        showTitle: showTitleMap[r.showId.toString()] || "הצגה לא ידועה",
+        showPosterUrl: showPosterMap[r.showId.toString()] ?? null,
+      };
+    });
+    
+    console.log("Successfully processed reviews:", reviews.length);
   } catch (error) {
     console.error("Database connection failed:", error);
     if (error instanceof Error) {
