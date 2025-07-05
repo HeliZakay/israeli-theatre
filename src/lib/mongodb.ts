@@ -1,11 +1,11 @@
 // src/lib/mongodb.ts
 import { MongoClient } from "mongodb";
 
-if (!process.env.MONGODB_URI) {
-  throw new Error("Please add your MongoDB URI to .env.local");
+// Handle missing URI during build time
+const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/fallback";
+if (!process.env.MONGODB_URI && process.env.NODE_ENV !== "production") {
+  console.warn("MongoDB URI not found. Using fallback for development.");
 }
-
-const uri = process.env.MONGODB_URI;
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
 

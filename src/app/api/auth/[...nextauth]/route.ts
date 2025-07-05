@@ -9,8 +9,8 @@ import type { NextAuthOptions } from "next-auth";
 const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      clientId: process.env.GOOGLE_CLIENT_ID || "fallback-client-id",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "fallback-client-secret",
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -23,20 +23,25 @@ const authOptions: NextAuthOptions = {
         const pw = creds?.password;
         if (!email || !pw) throw new Error("נא להזין אימייל וסיסמה");
 
-        const client = await clientPromise;
-        const user = await client.db().collection("users").findOne({ email });
+        try {
+          const client = await clientPromise;
+          const user = await client.db().collection("users").findOne({ email });
 
-        if (!user) {
-          throw new Error("משתמש לא נמצא");
-        }
-        if (!user.passwordHash) {
-          // No password on file → Google-only account
-          throw new Error("חשבון נוצר דרך Google בלבד. אנא הגדר סיסמה מחדש.");
-        }
-        const isValid = await compare(pw, user.passwordHash);
-        if (!isValid) throw new Error("סיסמה שגויה");
+          if (!user) {
+            throw new Error("משתמש לא נמצא");
+          }
+          if (!user.passwordHash) {
+            // No password on file → Google-only account
+            throw new Error("חשבון נוצר דרך Google בלבד. אנא הגדר סיסמה מחדש.");
+          }
+          const isValid = await compare(pw, user.passwordHash);
+          if (!isValid) throw new Error("סיסמה שגויה");
 
-        return { id: user._id.toString(), name: user.name, email: user.email };
+          return { id: user._id.toString(), name: user.name, email: user.email };
+        } catch (error) {
+          console.error("Auth error:", error);
+          throw new Error("שגיאה בהתחברות");
+        }
       },
     }),
   ],
@@ -45,27 +50,32 @@ const authOptions: NextAuthOptions = {
     async signIn({ user, account }) {
       // Auto-provision users on first Google sign-in
       if (account?.provider === "google" && user.email) {
-        const client = await clientPromise;
-        const db = client.db();
-        await db.collection("users").updateOne(
-          { email: user.email },
-          {
-            $setOnInsert: {
-              name: user.name,
-              email: user.email,
-              image: user.image,
-              createdAt: new Date(),
+        try {
+          const client = await clientPromise;
+          const db = client.db();
+          await db.collection("users").updateOne(
+            { email: user.email },
+            {
+              $setOnInsert: {
+                name: user.name,
+                email: user.email,
+                image: user.image,
+                createdAt: new Date(),
+              },
             },
-          },
-          { upsert: true }
-        );
+            { upsert: true }
+          );
+        } catch (error) {
+          console.error("Error during sign-in:", error);
+          // Continue with sign-in even if DB operation fails
+        }
       }
       return true;
     },
   },
 
   session: { strategy: "jwt" },
-  jwt: { secret: process.env.NEXTAUTH_SECRET },
+  jwt: { secret: process.env.NEXTAUTH_SECRET || "fallback-secret" },
   pages: { signIn: "/login", error: "/login" },
 };
 
