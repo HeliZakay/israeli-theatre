@@ -45,16 +45,53 @@ async function sendResetEmail(to: string, token: string) {
     to,
     subject: "איפוס סיסמה ל–תיאטרון בישראל",
     html: `
-      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; direction: rtl; text-align: right; background: linear-gradient(135deg, #f5f1eb 0%, #e8dcc6 100%);">
-        <div style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(139, 69, 19, 0.1);">
-          <!-- Header with logo placeholder -->
-          <div style="text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #8B4513;">
-            <h1 style="color: #8B4513; margin: 0; font-size: 28px; font-weight: bold;">🎭 תיאטרון בישראל</h1>
+      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; direction: rtl; text-align: right; background: linear-gradient(135deg, #fdf2f2 0%, #fce7e7 100%);">
+        <div style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(139, 21, 56, 0.1);">
+          <!-- Header with real logo -->
+          <div style="text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #8b1538;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 50" width="170" height="50" style="margin: 0 auto;">
+              <defs>
+                <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#8B1538;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#6B1029;stop-opacity:1" />
+                </linearGradient>
+                <filter id="textShadow">
+                  <feDropShadow dx="1" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.8"/>
+                </filter>
+              </defs>
+              <rect x="0" y="0" width="170" height="50" rx="8" fill="url(#bgGradient)"/>
+              <rect x="0" y="3" width="170" height="2" fill="#8B6F3A"/>
+              <g>
+                <rect x="5" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
+                <rect x="6" y="5" width="6" height="40" fill="#C19B6B"/>
+                <line x1="9" y1="5" x2="9" y2="45" stroke="#B8956A" stroke-width="0.5"/>
+                <rect x="15" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
+                <rect x="16" y="5" width="6" height="40" fill="#C19B6B"/>
+                <line x1="19" y1="5" x2="19" y2="45" stroke="#B8956A" stroke-width="0.5"/>
+                <rect x="25" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
+                <rect x="26" y="5" width="6" height="40" fill="#C19B6B"/>
+                <line x1="29" y1="5" x2="29" y2="45" stroke="#B8956A" stroke-width="0.5"/>
+              </g>
+              <g>
+                <rect x="137" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
+                <rect x="138" y="5" width="6" height="40" fill="#C19B6B"/>
+                <line x1="141" y1="5" x2="141" y2="45" stroke="#B8956A" stroke-width="0.5"/>
+                <rect x="147" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
+                <rect x="148" y="5" width="6" height="40" fill="#C19B6B"/>
+                <line x1="151" y1="5" x2="151" y2="45" stroke="#B8956A" stroke-width="0.5"/>
+                <rect x="157" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
+                <rect x="158" y="5" width="6" height="40" fill="#C19B6B"/>
+                <line x1="161" y1="5" x2="161" y2="45" stroke="#B8956A" stroke-width="0.5"/>
+              </g>
+              <text x="85" y="22" font-family="serif" font-size="18" font-weight="bold" fill="#FFFFFF" filter="url(#textShadow)" text-anchor="middle">תיאטרון</text>
+              <text x="85" y="38" font-family="serif" font-size="14" font-weight="600" fill="#FFFFFF" opacity="0.9" filter="url(#textShadow)" text-anchor="middle">בישראל</text>
+              <rect x="35" y="47" width="100" height="2" fill="#B8956A" opacity="0.7"/>
+            </svg>
           </div>
           
           <!-- Main content -->
           <div style="color: #333; line-height: 1.6;">
-            <h2 style="color: #8B4513; text-align: center; margin-bottom: 25px; font-size: 24px;">איפוס סיסמה</h2>
+            <h2 style="color: #8b1538; text-align: center; margin-bottom: 25px; font-size: 24px;">איפוס סיסמה</h2>
             
             <p style="font-size: 16px; margin-bottom: 15px;">שלום רב,</p>
             
@@ -69,7 +106,7 @@ async function sendResetEmail(to: string, token: string) {
             <!-- CTA Button -->
             <div style="text-align: center; margin: 40px 0;">
               <a href="${resetUrl}" 
-                 style="background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%); 
+                 style="background: linear-gradient(135deg, #8b1538 0%, #7a1230 100%); 
                         color: white; 
                         padding: 16px 32px; 
                         text-decoration: none; 
@@ -77,14 +114,14 @@ async function sendResetEmail(to: string, token: string) {
                         font-size: 18px; 
                         font-weight: bold; 
                         display: inline-block; 
-                        box-shadow: 0 4px 10px rgba(139, 69, 19, 0.3);
+                        box-shadow: 0 4px 10px rgba(139, 21, 56, 0.3);
                         transition: all 0.3s ease;">
                 🔑 איפוס סיסמה
               </a>
             </div>
             
             <!-- Instructions -->
-            <div style="background: #f8f6f0; border-right: 4px solid #8B4513; padding: 20px; margin: 30px 0; border-radius: 0 8px 8px 0;">
+            <div style="background: #fdf2f2; border-right: 4px solid #8b1538; padding: 20px; margin: 30px 0; border-radius: 0 8px 8px 0;">
               <p style="margin: 0; font-size: 15px; color: #666;">
                 ⏰ <strong>חשוב לדעת:</strong> הקישור תקף למשך שעה אחת בלבד.
               </p>
@@ -97,7 +134,7 @@ async function sendResetEmail(to: string, token: string) {
             <!-- Alternative link -->
             <p style="font-size: 14px; color: #888; margin-bottom: 30px;">
               אם הכפתור לא עובד, העתק והדבק את הקישור הבא בדפדפן:
-              <br><a href="${resetUrl}" style="color: #8B4513; word-break: break-all;">${resetUrl}</a>
+              <br><a href="${resetUrl}" style="color: #8b1538; word-break: break-all;">${resetUrl}</a>
             </p>
           </div>
           
