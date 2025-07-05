@@ -45,6 +45,10 @@ const authOptions: NextAuthOptions = {
           };
         } catch (error) {
           console.error("Auth error:", error);
+          // Re-throw the original error to preserve the specific message
+          if (error instanceof Error) {
+            throw error;
+          }
           throw new Error("שגיאה בהתחברות");
         }
       },

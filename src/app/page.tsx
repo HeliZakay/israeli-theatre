@@ -17,7 +17,8 @@ export default async function HomePage() {
     userEmail?: string;
     showTitle?: string;
     showPosterUrl?: string | null;
-  }[] = [];  try {
+  }[] = [];
+  try {
     // Fetch shows from database
     const rawShows = await (await showsCollection()).find().toArray();
 
@@ -48,10 +49,6 @@ export default async function HomePage() {
       .sort({ createdAt: -1 })
       .limit(5)
       .toArray();
-    console.log(
-      "Successfully fetched reviews from database:",
-      rawReviews.length
-    );
 
     reviews = rawReviews.map((r) => ({
       _id: r._id?.toString(),
