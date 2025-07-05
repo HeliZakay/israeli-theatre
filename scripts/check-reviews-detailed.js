@@ -1,6 +1,6 @@
 // scripts/check-reviews-detailed.js
 const { MongoClient } = require("mongodb");
-require('dotenv').config({ path: '.env.local' });
+require("dotenv").config({ path: ".env.local" });
 
 const uri = process.env.MONGODB_URI;
 
@@ -9,7 +9,7 @@ async function checkReviewsDetailed() {
     console.error("MONGODB_URI environment variable is not set");
     process.exit(1);
   }
-  
+
   const client = new MongoClient(uri);
 
   try {
