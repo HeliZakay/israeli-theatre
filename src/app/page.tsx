@@ -149,6 +149,20 @@ export default async function HomePage() {
 
   return (
     <main className="container mx-auto p-4 space-y-12">
+      {/* Debug section - remove in production */}
+      <div className="bg-gray-100 p-4 rounded-lg text-sm">
+        <h3 className="font-semibold mb-2">Debug Info:</h3>
+        <p>Shows count: {shows.length}</p>
+        <p>Reviews count: {reviews.length}</p>
+        <a 
+          href="/api/test-db" 
+          target="_blank" 
+          className="text-blue-500 hover:underline"
+        >
+          Test Database Connection
+        </a>
+      </div>
+
       {/* Shows grid */}
       <section>
         <h1 className="text-3xl font-bold mb-6 text-right text-theater-900">
