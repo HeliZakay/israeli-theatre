@@ -5,6 +5,7 @@ import { showsCollection, reviewsCollection } from "@/lib/db";
 import type { ShowCardData } from "@/types/models";
 
 export default async function HomePage() {
+  console.log("HomePage started loading...");
   let shows: ShowCardData[] = [];
   let reviews: {
     _id?: string;
@@ -18,9 +19,12 @@ export default async function HomePage() {
     showTitle?: string;
     showPosterUrl?: string | null;
   }[] = [];
+  let usesMockData = false;
   try {
+    console.log("Attempting to connect to database...");
     // Fetch shows from database
     const rawShows = await (await showsCollection()).find().toArray();
+    console.log("Shows fetched successfully, count:", rawShows.length);
 
     shows = rawShows.map((s) => ({
       id: s._id!.toString(),
@@ -71,6 +75,8 @@ export default async function HomePage() {
       console.error("Error details:", error.message);
       console.error("Stack trace:", error.stack);
     }
+    usesMockData = true;
+    console.log("Switching to mock data...");
     // Fallback to mock data if database fails
     shows = [
       {
@@ -150,6 +156,13 @@ export default async function HomePage() {
 
   return (
     <main className="container mx-auto p-4 space-y-12">
+      {/* Debug info */}
+      {usesMockData && (
+        <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded mb-4">
+          <strong>⚠️ Debug:</strong> Using mock data due to database connection issues
+        </div>
+      )}
+      
       {/* Shows grid */}
       <section>
         <h1 className="text-3xl font-bold mb-6 text-right text-theater-900">
