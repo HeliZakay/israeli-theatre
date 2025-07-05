@@ -1,11 +1,16 @@
 // scripts/check-dev-data.js
 const { MongoClient } = require("mongodb");
+require('dotenv').config({ path: '.env.local' });
 
-// משתמש ב-URI של פיתוח (עם -dev בסוף)
-const uri =
-  "mongodb+srv://helizakay1:Lsdfdslfkj-900-90-@cluster0.lm1gefl.mongodb.net/israeli-theater-dev?retryWrites=true&w=majority&appName=Cluster0";
+// Use environment variable for MongoDB URI
+const uri = process.env.MONGODB_URI;
 
 async function checkDevData() {
+  if (!uri) {
+    console.error("MONGODB_URI environment variable is not set");
+    process.exit(1);
+  }
+  
   const client = new MongoClient(uri);
 
   try {

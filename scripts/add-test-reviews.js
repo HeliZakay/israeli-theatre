@@ -1,10 +1,15 @@
 // scripts/add-test-reviews.js
 const { MongoClient, ObjectId } = require("mongodb");
+require('dotenv').config({ path: '.env.local' });
 
-const uri =
-  "mongodb+srv://helizakay1:Lsdfdslfkj-900-90-@cluster0.lm1gefl.mongodb.net/israeli-theater?retryWrites=true&w=majority&appName=Cluster0";
+const uri = process.env.MONGODB_URI;
 
 async function addTestReviews() {
+  if (!uri) {
+    console.error("MONGODB_URI environment variable is not set");
+    process.exit(1);
+  }
+  
   const client = new MongoClient(uri);
 
   try {
