@@ -15,6 +15,11 @@ const options = {
   maxPoolSize: 10,
   maxIdleTimeMS: 30000,
   minPoolSize: 5,
+  // SSL options for better compatibility
+  ssl: true,
+  tls: true,
+  tlsAllowInvalidCertificates: true,
+  tlsAllowInvalidHostnames: true,
 };
 
 declare global {
