@@ -22,6 +22,8 @@ export default async function HomePage() {
   let usesMockData = false;
   try {
     console.log("Attempting to connect to database...");
+    console.log("MongoDB URI exists:", !!process.env.MONGODB_URI);
+    console.log("Environment:", process.env.NODE_ENV);
     // Fetch shows from database
     const rawShows = await (await showsCollection()).find().toArray();
     console.log("Shows fetched successfully, count:", rawShows.length);
