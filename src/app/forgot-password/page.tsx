@@ -39,7 +39,7 @@ export default function ForgotPasswordPage() {
               className="mt-1 w-full border p-2 rounded"
             />
           </div>
-          <button className="px-4 py-2 bg-red-700 text-white rounded hover:bg-red-800 transition cursor-pointer">
+          <button className="px-4 py-2 bg-theater-700 text-white rounded hover:bg-theater-800 transition cursor-pointer">
             שלח לינק לאיפוס
           </button>
         </form>
