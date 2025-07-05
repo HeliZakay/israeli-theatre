@@ -20,8 +20,12 @@ export default async function HomePage() {
   }[] = [];
 
   try {
+    console.log("Attempting to connect to database...");
+    console.log("MONGODB_URI exists:", !!process.env.MONGODB_URI);
+    
     // Fetch shows from database
     const rawShows = await (await showsCollection()).find().toArray();
+    console.log("Successfully fetched shows from database:", rawShows.length);
 
     shows = rawShows.map((s) => ({
       id: s._id!.toString(),
@@ -50,6 +54,7 @@ export default async function HomePage() {
       .sort({ createdAt: -1 })
       .limit(5)
       .toArray();
+    console.log("Successfully fetched reviews from database:", rawReviews.length);
 
     reviews = rawReviews.map((r) => ({
       _id: r._id?.toString(),

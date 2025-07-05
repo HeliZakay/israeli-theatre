@@ -10,7 +10,8 @@ const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "fallback-client-id",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "fallback-client-secret",
+      clientSecret:
+        process.env.GOOGLE_CLIENT_SECRET || "fallback-client-secret",
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -37,7 +38,11 @@ const authOptions: NextAuthOptions = {
           const isValid = await compare(pw, user.passwordHash);
           if (!isValid) throw new Error("סיסמה שגויה");
 
-          return { id: user._id.toString(), name: user.name, email: user.email };
+          return {
+            id: user._id.toString(),
+            name: user.name,
+            email: user.email,
+          };
         } catch (error) {
           console.error("Auth error:", error);
           throw new Error("שגיאה בהתחברות");
