@@ -81,6 +81,28 @@ const authOptions: NextAuthOptions = {
       }
       return true;
     },
+
+    async session({ session, token }) {
+      // Check if user still exists in database
+      if (session.user?.email) {
+        try {
+          const client = await clientPromise;
+          const db = client.db();
+          const userExists = await db.collection("users").findOne({ 
+            email: session.user.email 
+          });
+          
+          // If user was deleted from database, remove user info from session
+          if (!userExists) {
+            return { expires: session.expires }; // Return empty session
+          }
+        } catch (error) {
+          console.error("Error checking user existence:", error);
+          // If DB check fails, continue with existing session
+        }
+      }
+      return session;
+    },
   },
 
   session: { strategy: "jwt" },
