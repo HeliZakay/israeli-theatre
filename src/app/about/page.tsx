@@ -17,37 +17,41 @@ export default function AboutPage() {
 
       {/* Features Grid */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-2xl font-semibold mb-2 text-right">מאגר הצגות</h2>
+        <div className="bg-gray-50 border-r-4 border-theater-600 p-6">
+          <h2 className="text-2xl font-semibold mb-2 text-right text-theater-800">
+            מאגר הצגות
+          </h2>
           <p className="text-gray-700 text-right">
             עיינו במגוון הצגות מקלאסיקות מודרניות ועד היצירות המובילות של היום.
           </p>
         </div>
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-2xl font-semibold mb-2 text-right">
+        <div className="bg-gray-50 border-r-4 border-theater-600 p-6">
+          <h2 className="text-2xl font-semibold mb-2 text-right text-theater-800">
             ביקורות אמת
           </h2>
           <p className="text-gray-700 text-right">
             קראו חוות דעת מאנשים כמוכם ודרגו על פי חוויה אישית.
           </p>
         </div>
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-2xl font-semibold mb-2 text-right">
-            תמונות וסרטונים
+        <div className="bg-gray-50 border-r-4 border-theater-600 p-6">
+          <h2 className="text-2xl font-semibold mb-2 text-right text-theater-800">
+            קהילת תיאטרון
           </h2>
           <p className="text-gray-700 text-right">
-            מצאו גלריה עשירה של פוסטרים, תמונות במה וסרטונים שיעוררו בכם השראה.
+            הצטרפו לקהילה של חובבי תיאטרון ושתפו את החוויות והדעות שלכם.
           </p>
         </div>
       </section>
 
       {/* Story Section */}
-      <section className="bg-white rounded-lg shadow p-8 space-y-4">
-        <h2 className="text-3xl font-bold text-right">למה אנחנו?</h2>
+      <section className="bg-gray-50 border-r-4 border-theater-600 p-8 space-y-4">
+        <h2 className="text-3xl font-bold text-right text-theater-800">
+          למה אנחנו?
+        </h2>
         <p className="text-gray-700 leading-relaxed text-right">
           ההשראה להקמת האתר נבעה מהצורך במקום אחד שיאגד את כל מה שיש לתיאטרון
           הישראלי להציע. במקום שבו תוכלו לתכנן ערב מושלם, ללמוד על הפקות חדשות
-          ולשתף את חוויותיכם כדי שכל חובב תיאטרון ימצא את הדרך שלו לתיאטרון.
+          ולשתף את חוויותיכם עם חובבי תיאטרון אחרים.
         </p>
         <p className="text-gray-700 leading-relaxed text-right">
           יחד, בונים קהילה תרבותית תוססת שבה כל קול נחשב – אז הצטרפו גם אתם!

@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -40,17 +41,12 @@ export default function ContactPage() {
               <p className="text-green-600 font-semibold mb-4">
                 תודה! ההודעה שלך נשלחה בהצלחה.
               </p>
-              <button
-                onClick={() => {
-                  setSubmitted(false);
-                  setName("");
-                  setEmail("");
-                  setMessage("");
-                }}
+              <Link
+                href="/"
                 className="mt-4 inline-block px-6 py-2 bg-theater-700 text-white font-medium rounded hover:bg-theater-800 transition cursor-pointer"
               >
-                שלח הודעה נוספת
-              </button>
+                חזרה לעמוד הבית
+              </Link>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">

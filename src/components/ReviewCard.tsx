@@ -39,11 +39,13 @@ export default function ReviewCard({ review }: ReviewCardProps) {
       {/* Show poster */}
       {review.showPosterUrl && (
         <div className="flex-shrink-0">
-          <img
-            src={review.showPosterUrl}
-            alt={review.showTitle}
-            className="w-24 h-full object-cover"
-          />
+          <Link href={`/shows/${review.showId.toString()}`}>
+            <img
+              src={review.showPosterUrl}
+              alt={review.showTitle}
+              className="w-24 h-full object-cover cursor-pointer hover:opacity-90 transition-opacity"
+            />
+          </Link>
         </div>
       )}
 

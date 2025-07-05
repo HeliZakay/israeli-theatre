@@ -43,23 +43,44 @@ export default function ReviewForm({
       isAuthenticated: status === "authenticated",
     };
 
-    await fetch(`/api/shows/${showId}/reviews`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(reviewData),
-    });
-    setLoading(false);
+    try {
+      await fetch(`/api/shows/${showId}/reviews`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reviewData),
+      });
 
-    // קרא לפונקציה שהועברה כדי לרענן את הביקורות
-    if (onReviewSubmitted) {
-      onReviewSubmitted();
-    } else {
-      router.refresh();
+      setLoading(false);
+
+      // נקה את הטופס
+      if (status !== "authenticated") setUserName("");
+      setRating(5);
+      setComment("");
+
+      // קרא לפונקציה שהועברה כדי לרענן את הביקורות
+      if (onReviewSubmitted) {
+        onReviewSubmitted();
+      } else {
+        router.refresh();
+      }
+
+      // גלול לסקציה של הביקורות רק אם המשתמש לא מחובר
+      // כי אם הוא מחובר, הביקורת שלו תופיע בסקציה "הביקורת שלי" למעלה
+      if (status !== "authenticated") {
+        setTimeout(() => {
+          const reviewsSection = document.getElementById("reviews-section");
+          if (reviewsSection) {
+            reviewsSection.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        }, 300);
+      }
+    } catch (error) {
+      setLoading(false);
+      console.error("Error submitting review:", error);
     }
-
-    if (status !== "authenticated") setUserName("");
-    setRating(5);
-    setComment("");
   }
 
   return (
@@ -188,7 +209,7 @@ export default function ReviewForm({
             </>
           ) : (
             "שלח חוות דעת"
-          )}
+          )}{" "}
         </button>
       </form>
     </div>

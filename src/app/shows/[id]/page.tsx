@@ -395,7 +395,7 @@ export default function ShowPage({ params }: PageProps) {
       </div>
 
       {/* Reviews section */}
-      <section className="space-y-6">
+      <section id="reviews-section" className="space-y-6">
         <h2 className="text-2xl font-semibold">
           {session && hasUserReviewed() ? "ביקורות אחרות" : "חוות דעת"}
         </h2>

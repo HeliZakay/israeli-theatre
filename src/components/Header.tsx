@@ -43,15 +43,6 @@ export default function Header() {
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center space-x-6 text-right">
           <Link
-            href="/"
-            className={getLinkClasses(
-              "/",
-              "font-semibold hover:text-white hover:bg-theater-800 px-3 py-1 rounded-md transition-all duration-200"
-            )}
-          >
-            בית
-          </Link>
-          <Link
             href="/about"
             className={getLinkClasses(
               "/about",
@@ -117,18 +108,6 @@ export default function Header() {
       {open && (
         <nav className="absolute top-full right-0 bg-theater-900 w-full z-50">
           <ul className="flex flex-col space-y-2 p-4 text-right">
-            <li>
-              <Link
-                href="/"
-                className={getLinkClasses(
-                  "/",
-                  "block font-semibold hover:text-white hover:bg-theater-800 py-2 px-3 rounded-md transition-all duration-200"
-                )}
-                onClick={() => setOpen(false)}
-              >
-                בית
-              </Link>
-            </li>
             <li>
               <Link
                 href="/about"
