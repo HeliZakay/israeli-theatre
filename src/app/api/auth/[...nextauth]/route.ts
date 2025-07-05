@@ -82,7 +82,7 @@ const authOptions: NextAuthOptions = {
       return true;
     },
 
-    async session({ session, token }) {
+    async session({ session }) {
       // Check if user still exists in database
       if (session.user?.email) {
         try {
