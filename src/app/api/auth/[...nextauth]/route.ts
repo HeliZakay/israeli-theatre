@@ -29,7 +29,7 @@ const authOptions: NextAuthOptions = {
           const user = await client.db().collection("users").findOne({ email });
 
           if (!user) {
-            throw new Error("משתמש לא נמצא");
+            throw new Error("האימייל לא רשום במערכת");
           }
           if (!user.passwordHash) {
             // No password on file → Google-only account

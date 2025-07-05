@@ -50,8 +50,12 @@ function LoginForm() {
     signIn("google", { callbackUrl: "/" });
   }
 
+  // Check different error types
+  const isSignUpError =
+    error?.includes("לא רשום במערכת") || error?.includes("לא נמצא");
   const isGoogleOnlyError =
     error === "חשבון נוצר דרך Google בלבד. אנא הגדר סיסמה מחדש.";
+  const isPasswordError = error?.includes("סיסמה שגויה");
 
   return (
     <main className="container mx-auto p-6 flex flex-col items-center">
@@ -84,15 +88,112 @@ function LoginForm() {
           </div>
         )}
 
-        {isGoogleOnlyError ? (
-          <p className="text-theater-700 text-sm mb-2">
-            חשבון זה נוצר באמצעות Google בלבד.&nbsp;
-            <Link href="/forgot-password" className="underline">
+        {isSignUpError ? (
+          <div className="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-lg mb-4">
+            <div className="flex items-center mb-2">
+              <svg
+                className="w-5 h-5 text-blue-600 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="font-medium">האימייל לא רשום במערכת</span>
+            </div>
+            <p className="text-sm mb-3">
+              נראה שעדיין לא נרשמת לאתר. ברוכים הבאים!
+            </p>
+            <Link
+              href="/signup"
+              className="inline-block bg-theater-600 text-white px-4 py-2 rounded-lg hover:bg-theater-700 transition-colors font-medium"
+            >
+              הירשם עכשיו
+            </Link>
+          </div>
+        ) : isGoogleOnlyError ? (
+          <div className="bg-orange-50 border border-orange-200 text-orange-800 px-4 py-3 rounded-lg mb-4">
+            <div className="flex items-center mb-2">
+              <svg
+                className="w-5 h-5 text-orange-600 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.314 18.5c-.77.833.192 2.5 1.732 2.5z"
+                />
+              </svg>
+              <span className="font-medium">חשבון Google בלבד</span>
+            </div>
+            <p className="text-sm mb-3">
+              חשבון זה נוצר באמצעות Google בלבד. כדי להתחבר עם סיסמה, צריך
+              להגדיר אותה תחילה.
+            </p>
+            <Link
+              href="/forgot-password"
+              className="inline-block bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors font-medium"
+            >
               הגדר סיסמה עכשיו
             </Link>
-          </p>
+          </div>
+        ) : isPasswordError ? (
+          <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-4">
+            <div className="flex items-center mb-2">
+              <svg
+                className="w-5 h-5 text-red-600 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                />
+              </svg>
+              <span className="font-medium">סיסמה שגויה</span>
+            </div>
+            <p className="text-sm mb-3">
+              הסיסמה שהזנת אינה נכונה. אנא נסה שוב.
+            </p>
+            <Link
+              href="/forgot-password"
+              className="inline-block bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium"
+            >
+              שכחת סיסמה?
+            </Link>
+          </div>
         ) : (
-          error && <p className="text-theater-700">{error}</p>
+          error && (
+            <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-4">
+              <div className="flex items-center">
+                <svg
+                  className="w-5 h-5 text-red-600 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+                <span className="font-medium">{error}</span>
+              </div>
+            </div>
+          )
         )}
 
         <div className="space-y-2">

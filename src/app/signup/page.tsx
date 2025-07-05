@@ -85,18 +85,56 @@ export default function SignupPage() {
         <h1 className="text-2xl font-bold mb-4 text-theater-800">הרשמה</h1>
 
         {error && (
-          <p className="text-theater-700">
+          <div className="mb-4">
             {error === "משתמש קיים" ? (
-              <>
-                משתמש קיים,{" "}
-                <Link href="/login" className="underline">
+              <div className="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-lg">
+                <div className="flex items-center mb-2">
+                  <svg
+                    className="w-5 h-5 text-blue-600 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span className="font-medium">האימייל כבר רשום</span>
+                </div>
+                <p className="text-sm mb-3">
+                  נראה שכבר יש לך חשבון באתר. אולי תרצה להתחבר?
+                </p>
+                <Link
+                  href="/login"
+                  className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                >
                   התחבר כאן
                 </Link>
-              </>
+              </div>
             ) : (
-              error
+              <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
+                <div className="flex items-center">
+                  <svg
+                    className="w-5 h-5 text-red-600 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                  <span className="font-medium">{error}</span>
+                </div>
+              </div>
             )}
-          </p>
+          </div>
         )}
 
         <div className="space-y-2">
@@ -156,10 +194,7 @@ export default function SignupPage() {
         onClick={handleGoogleSignUp}
         className="flex items-center justify-center w-full max-w-sm px-4 py-2 border rounded-md hover:bg-gray-100 transition cursor-pointer"
       >
-        {/* You can replace this emoji with a proper Google icon if you install react-icons */}
-        <span className="mr-2 text-xl">
-          <FcGoogle className="mr-2 text-xl" />
-        </span>
+        <FcGoogle className="mr-2 text-xl" />
         הרשמה באמצעות Google
       </button>
     </main>
