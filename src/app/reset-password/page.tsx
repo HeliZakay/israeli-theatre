@@ -23,7 +23,7 @@ function ResetPasswordForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token, newPassword: newPwd }),
       });
-      
+
       const data = await res.json();
 
       if (!res.ok) {
@@ -39,7 +39,8 @@ function ResetPasswordForm() {
       }
     } catch (err: unknown) {
       setIsLoading(false);
-      const errorMessage = err instanceof Error ? err.message : "אירעה שגיאה ברשת";
+      const errorMessage =
+        err instanceof Error ? err.message : "אירעה שגיאה ברשת";
       setError(errorMessage);
     }
   }
