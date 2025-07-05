@@ -17,23 +17,30 @@ function ResetPasswordForm() {
     setIsLoading(true);
     setError(null);
 
-    const res = await fetch("/api/reset-password", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token, newPassword: newPwd }),
-    });
-    const data = await res.json();
+    try {
+      const res = await fetch("/api/reset-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, newPassword: newPwd }),
+      });
+      
+      const data = await res.json();
 
-    if (!res.ok) {
-      setError(data.message);
+      if (!res.ok) {
+        setError(data.message || "שגיאה בעדכון הסיסמה");
+        setIsLoading(false);
+      } else {
+        setSuccess(true);
+        setIsLoading(false);
+        // Show success message for 2 seconds, then redirect
+        setTimeout(() => {
+          router.push("/login?message=password-reset-success");
+        }, 2000);
+      }
+    } catch (err: unknown) {
       setIsLoading(false);
-    } else {
-      setSuccess(true);
-      setIsLoading(false);
-      // Show success message for 2 seconds, then redirect
-      setTimeout(() => {
-        router.push("/login?message=password-reset-success");
-      }, 2000);
+      const errorMessage = err instanceof Error ? err.message : "אירעה שגיאה ברשת";
+      setError(errorMessage);
     }
   }
 
