@@ -4,6 +4,9 @@ import ReviewCard from "@/components/ReviewCard";
 import { showsCollection, reviewsCollection } from "@/lib/db";
 import type { ShowCardData } from "@/types/models";
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export default async function HomePage() {
   console.log("HomePage started loading...");
   let shows: ShowCardData[] = [];
