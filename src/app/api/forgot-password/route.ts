@@ -47,46 +47,11 @@ async function sendResetEmail(to: string, token: string) {
     html: `
       <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; direction: rtl; text-align: right; background: linear-gradient(135deg, #fdf2f2 0%, #fce7e7 100%);">
         <div style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(139, 21, 56, 0.1);">
-          <!-- Header with real logo -->
+          <!-- Header with site logo -->
           <div style="text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #8b1538;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 50" width="170" height="50" style="margin: 0 auto;">
-              <defs>
-                <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#8B1538;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#6B1029;stop-opacity:1" />
-                </linearGradient>
-                <filter id="textShadow">
-                  <feDropShadow dx="1" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.8"/>
-                </filter>
-              </defs>
-              <rect x="0" y="0" width="170" height="50" rx="8" fill="url(#bgGradient)"/>
-              <rect x="0" y="3" width="170" height="2" fill="#8B6F3A"/>
-              <g>
-                <rect x="5" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
-                <rect x="6" y="5" width="6" height="40" fill="#C19B6B"/>
-                <line x1="9" y1="5" x2="9" y2="45" stroke="#B8956A" stroke-width="0.5"/>
-                <rect x="15" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
-                <rect x="16" y="5" width="6" height="40" fill="#C19B6B"/>
-                <line x1="19" y1="5" x2="19" y2="45" stroke="#B8956A" stroke-width="0.5"/>
-                <rect x="25" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
-                <rect x="26" y="5" width="6" height="40" fill="#C19B6B"/>
-                <line x1="29" y1="5" x2="29" y2="45" stroke="#B8956A" stroke-width="0.5"/>
-              </g>
-              <g>
-                <rect x="137" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
-                <rect x="138" y="5" width="6" height="40" fill="#C19B6B"/>
-                <line x1="141" y1="5" x2="141" y2="45" stroke="#B8956A" stroke-width="0.5"/>
-                <rect x="147" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
-                <rect x="148" y="5" width="6" height="40" fill="#C19B6B"/>
-                <line x1="151" y1="5" x2="151" y2="45" stroke="#B8956A" stroke-width="0.5"/>
-                <rect x="157" y="5" width="8" height="40" fill="#D4A574" rx="1"/>
-                <rect x="158" y="5" width="6" height="40" fill="#C19B6B"/>
-                <line x1="161" y1="5" x2="161" y2="45" stroke="#B8956A" stroke-width="0.5"/>
-              </g>
-              <text x="85" y="22" font-family="serif" font-size="18" font-weight="bold" fill="#FFFFFF" filter="url(#textShadow)" text-anchor="middle">תיאטרון</text>
-              <text x="85" y="38" font-family="serif" font-size="14" font-weight="600" fill="#FFFFFF" opacity="0.9" filter="url(#textShadow)" text-anchor="middle">בישראל</text>
-              <rect x="35" y="47" width="100" height="2" fill="#B8956A" opacity="0.7"/>
-            </svg>
+            <div style="background: linear-gradient(135deg, #8b1538 0%, #6b1029 100%); color: white; padding: 15px 30px; border-radius: 8px; display: inline-block; font-size: 24px; font-weight: bold; margin: 0 auto;">
+              🎭 תיאטרון בישראל
+            </div>
           </div>
           
           <!-- Main content -->
